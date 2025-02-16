@@ -212,27 +212,27 @@ const CirclePeople = ({ names }: { names: string[] }) => {
     renderLoop();
 
     // Handle resize events (consider debouncing if needed)
-    const handleResize = () => {
-      const newWidth = window.innerWidth;
-      const newHeight = window.innerHeight;
-      const newScaledWidth = newWidth * pixelRatio;
-      const newScaledHeight = newHeight * pixelRatio;
-      canvas.width = newScaledWidth;
-      canvas.height = newScaledHeight;
-      canvas.style.width = `${newWidth}px`;
-      canvas.style.height = `${newHeight}px`;
+    // const handleResize = () => {
+    //   const newWidth = window.innerWidth;
+    //   const newHeight = window.innerHeight;
+    //   const newScaledWidth = newWidth * pixelRatio;
+    //   const newScaledHeight = newHeight * pixelRatio;
+    //   canvas.width = newScaledWidth;
+    //   canvas.height = newScaledHeight;
+    //   canvas.style.width = `${newWidth}px`;
+    //   canvas.style.height = `${newHeight}px`;
 
-      // Update walls positions
-      Matter.Body.setPosition(walls[0], { x: newWidth / 2, y: newHeight + 30 });
-      Matter.Body.setPosition(walls[1], { x: -30, y: newHeight / 2 });
-      Matter.Body.setPosition(walls[2], { x: newWidth + 30, y: newHeight / 2 });
-    };
+    //   // Update walls positions
+    //   Matter.Body.setPosition(walls[0], { x: newWidth / 2, y: newHeight + 30 });
+    //   Matter.Body.setPosition(walls[1], { x: -30, y: newHeight / 2 });
+    //   Matter.Body.setPosition(walls[2], { x: newWidth + 30, y: newHeight / 2 });
+    // };
 
-    window.addEventListener("resize", handleResize);
+    // window.addEventListener("resize", handleResize);
 
     return () => {
       clearInterval(intervalId);
-      window.removeEventListener("resize", handleResize);
+    //   window.removeEventListener("resize", handleResize);
       cancelAnimationFrame(animationFrameId);
       Matter.Events.off(engineRef.current!, "collisionStart");
       // Clean up Matter objects
