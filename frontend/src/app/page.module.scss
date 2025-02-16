@@ -1,0 +1,144 @@
+.page {
+  width: 100vw;
+  background: #fff7df;
+
+  @media (max-width: 720px) {
+    font-size: 12px;
+  }
+}
+
+.main {
+  @media (max-width: 720px) {
+    padding: 5em 2em;
+  }
+  padding: 6em;
+}
+
+.title {
+  @media (max-width: 720px) {
+    width: 100%;
+  }
+  position: relative;
+  max-width: 700px;
+  margin: auto;
+  aspect-ratio: 1/1;
+  // display: flex;
+  // align-items: center;
+
+  .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("/title-image.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    aspect-ratio: 1/1;
+    width: 100%;
+  }
+
+  .halo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    background-image: url("/title-image-halo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    aspect-ratio: 1/1;
+  }
+
+  .face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 17% auto;
+    background-image: url("/keiths-face.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 36%;
+    aspect-ratio: 89/113;
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(10deg);
+      }
+    }
+
+    animation: rotate 1s infinite steps(2);
+  }
+}
+
+.message-list {
+  & {
+    list-style-type: none;
+    padding: 0;
+    margin: 5em auto;
+    max-width: 600px;
+  }
+
+  li {
+    margin-bottom: 4em;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    /* border: 2px solid #000; */
+    /* display: flex; */
+
+    .image {
+      // margin-bottom: 2em;
+      /* margin-top: -3em; */
+    }
+
+    .texts {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: space-between;
+    }
+
+    .message {
+      font-size: 1.6em;
+      line-height: 1.4;
+      white-space: pre-wrap;
+      flex: 1;
+      padding: 2em;
+    }
+
+    .name {
+      font-size: 1.6em;
+      font-weight: bold;
+    }
+
+    .name,
+    .date {
+      text-align: right;
+      line-height: 1.5;
+    }
+
+    .date {
+      color: #666;
+      font-size: 0.9em;
+    }
+
+    .meta {
+      padding: 1em 2em;
+      background-color: #fffbf0;
+    }
+  }
+}
+
+.footer {
+  text-align: center;
+}
