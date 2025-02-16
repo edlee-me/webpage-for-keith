@@ -12,24 +12,27 @@
 }
 
 .main {
-  @media (max-width: 720px) {
-    padding: 5em 2em;
-    padding-bottom: 50vh;
-  }
   padding: 6em;
   position: relative;
   z-index: 2;
   padding-bottom: 50vh;
+
+  @media (max-width: 720px) {
+    padding: 5em 2em;
+    padding-bottom: 50vh;
+  }
 }
 
 .title {
-  @media (max-width: 720px) {
-    width: 100%;
-  }
   position: relative;
   max-width: 700px;
   margin: auto;
   aspect-ratio: 1/1;
+  animation: rotate 1s infinite steps(2);
+
+  @media (max-width: 720px) {
+    width: 100%;
+  }
   // display: flex;
   // align-items: center;
 
@@ -82,8 +85,6 @@
         transform: rotate(10deg);
       }
     }
-
-    animation: rotate 1s infinite steps(2);
   }
 }
 
@@ -103,11 +104,6 @@
     overflow: hidden;
     /* border: 2px solid #000; */
     /* display: flex; */
-
-    .image {
-      // margin-bottom: 2em;
-      /* margin-top: -3em; */
-    }
 
     .texts {
       flex: 1;

@@ -44,6 +44,7 @@ interface RenderWithText extends Matter.Render {
 
 const CirclePeople = ({ names }: { names: string[] }) => {
   const sceneRef = useRef<HTMLDivElement>(null);
+  // @ts-expect-error: engineRef is initialized in useEffect
   const engineRef = useRef<Matter.Engine>();
   const circlesRef = useRef<CircleBody[]>([]);
   const remainingNamesRef = useRef<string[]>([...names]);
@@ -65,6 +66,7 @@ const CirclePeople = ({ names }: { names: string[] }) => {
       angularVelocity: (Math.random() - 0.5) * 0.05,
       render: {
         fillStyle: `hsl(${Math.random() * 360}, 70%, 70%)`,
+        //@ts-expect-error: text is not part of the default render options
         text: `${name}`,
         textColor: "#866823",
       },
@@ -275,12 +277,13 @@ const CirclePeople = ({ names }: { names: string[] }) => {
       Render.stop(render);
       Runner.stop(runner);
       if (engineRef.current) {
+        // @ts-expect-error: World.clear is not part of the default Matter.Engine
         World.clear(engineRef.current.world);
         Engine.clear(engineRef.current);
       }
       render.canvas.remove();
     };
-  }, []);
+  }, [pixelRatio]);
 
   return (
     <>
