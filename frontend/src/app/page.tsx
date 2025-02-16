@@ -29,15 +29,6 @@ const handleSubmit = async (formData: FormData) => {
       throw new Error("Name and message are required");
     }
 
-    // let imagePublicId: string | null = null;
-    // if (imageInput) {
-    //   console.log("Uploading image...");
-
-    //   const res = await uploadImage(imageInput);
-    //   const { public_id } = res as { public_id: string };
-    //   imagePublicId = public_id;
-    // }
-
     const sql = neon(process.env.DATABASE_URL!);
     const dateTime = new Date().toISOString();
 
