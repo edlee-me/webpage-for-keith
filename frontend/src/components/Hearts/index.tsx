@@ -51,7 +51,7 @@ const CirclePeople = ({ names }: { names: string[] }) => {
   //   const pixelRatio = window.devicePixelRatio || 1;
   const processedNamesRef = useRef<Set<string>>(new Set());
   const [pixelRatio, setPixelRatio] = useState<number>(1);
-  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState<number>(0);
 
   useEffect(() => {
     setPixelRatio(window.devicePixelRatio || 1);
