@@ -1,6 +1,6 @@
 "use client";
 // CirclePeople.tsx
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Matter from "matter-js";
 import { CircleBody } from "@/types";
 
@@ -48,12 +48,19 @@ const CirclePeople = ({ names }: { names: string[] }) => {
   const engineRef = useRef<Matter.Engine>();
   const circlesRef = useRef<CircleBody[]>([]);
   const remainingNamesRef = useRef<string[]>([...names]);
-  const pixelRatio = window.devicePixelRatio || 1;
+  //   const pixelRatio = window.devicePixelRatio || 1;
   const processedNamesRef = useRef<Set<string>>(new Set());
+  const [pixelRatio, setPixelRatio] = useState<number>(1);
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+
+  useEffect(() => {
+    setPixelRatio(window.devicePixelRatio || 1);
+    setWindowWidth(window.innerWidth);
+  }, []);
 
   const createCircle = (name: string): CircleBody => {
     const randomX =
-      Math.random() * (window.innerWidth - 2 * CIRCLE_RADIUS - 20) +
+      Math.random() * (windowWidth - 2 * CIRCLE_RADIUS - 20) +
       CIRCLE_RADIUS +
       10;
     const randomRotation = Math.random() * Math.PI * 2; // Random initial rotation
