@@ -6,6 +6,7 @@ import CloudImage from "@/components/cloudImage";
 import styles from "./page.module.scss";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
+import Hearts from "@/components/Hearts";
 
 async function getData() {
   const sql = neon(process.env.DATABASE_URL!);
@@ -55,8 +56,11 @@ export default async function Page() {
 
   dayjs.extend(advancedFormat);
 
+  const names = data.map(({ name }) => name);
+
   return (
     <div className={styles.page}>
+      <Hearts names={names} />
       <div className={styles.main}>
         <div className={styles.title}>
           <div className={styles.halo}></div>
@@ -85,7 +89,9 @@ export default async function Page() {
             );
           })}
         </ul>
-        <footer className={styles.footer}>© {new Date().getFullYear()} Created with ❤️ by APAC Monks </footer>
+        <footer className={styles.footer}>
+          © {new Date().getFullYear()} Created with ❤️ by APAC Monks{" "}
+        </footer>
       </div>
       <Form onSubmit={handleSubmit} />
     </div>

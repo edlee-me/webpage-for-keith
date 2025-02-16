@@ -7,3 +7,12 @@ export type MessageEntryType = {
   created_at: string;
   image_pub_id?: string;
 };
+
+// types.ts
+export interface CircleBody extends Matter.Body {
+  render: {
+    fillStyle: string;
+    text: string;
+    textColor: string;
+  };
+}

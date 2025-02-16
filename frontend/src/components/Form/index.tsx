@@ -39,6 +39,10 @@ export default function Form({
       await onSubmit(formData);
 
       router.refresh();
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setShowForm(false);
+
       const form = document.querySelector("form") as HTMLFormElement;
       form.reset();
     } catch (error) {
