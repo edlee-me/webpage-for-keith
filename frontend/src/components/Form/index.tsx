@@ -11,9 +11,14 @@ export default function Form({
   const router = useRouter();
 
   const [showForm, setShowForm] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  async function handleSubmit(formData: FormData) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (submitting) return; // Prevent multiple submissions
+    setSubmitting(true);
     try {
+      const formData = new FormData(e.currentTarget);
       const file = formData.get("image") as File | null;
 
       if (file && file.size > 0) {
@@ -42,11 +47,14 @@ export default function Form({
 
       window.scrollTo({ top: 0, behavior: "smooth" });
       setShowForm(false);
+      setSubmitting(false);
 
       const form = document.querySelector("form") as HTMLFormElement;
       form.reset();
     } catch (error) {
       console.error("Error:", error);
+    } finally {
+      setSubmitting(false);
     }
   }
 
@@ -54,7 +62,7 @@ export default function Form({
     <>
       {showForm && (
         <div className={styles["form-container"]}>
-          <form action={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <div className={styles["row"]}>
               <input
                 placeholder="Who are you?"
@@ -77,7 +85,13 @@ export default function Form({
               <label htmlFor="image">Upload photo / image</label>
               <input id="image" type="file" name="image" accept="image/*" />
             </div>
-            <button type="submit">💌 Share your love!</button>
+            <button
+              disabled={submitting}
+              type="submit"
+              style={{ cursor: submitting ? "not-allowed" : "pointer" }}
+            >
+              {submitting ? "Sending out ..." : "💌 Share your love!"}
+            </button>
             <button onClick={() => setShowForm(false)} className={styles.close}>
               &times;
             </button>
