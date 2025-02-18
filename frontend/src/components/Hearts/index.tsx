@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Matter from "matter-js";
 import { CircleBody } from "@/types";
 
-const CIRCLE_RADIUS: number = 45;
+const CIRCLE_RADIUS: number = 36;
 const DROP_INTERVAL: number = 400;
 const CIRCLE_CONFIG = {
   restitution: 0.5,
