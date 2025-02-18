@@ -49,7 +49,7 @@ export default async function Page() {
 
   dayjs.extend(advancedFormat);
 
-  const names = data.map(({ name }) => name);
+  const names = data.map(({ name }) => name).reverse();
 
   return (
     <div className={styles.page}>
