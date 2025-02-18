@@ -196,7 +196,7 @@ const CirclePeople = ({ names }: { names: string[] }) => {
         context.shadowBlur = 0;
 
         // Draw text
-        context.font = "16px system-ui, sans-serif";
+        context.font = "13px system-ui, sans-serif";
         context.fillStyle = "#b6a681";
         context.textAlign = "center";
         context.textBaseline = "middle";
